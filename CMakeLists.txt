@@ -8,7 +8,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 add_definitions(-DVERSION="${PROJECT_VERSION}")
 
-find_package(Qt5 COMPONENTS Core Network REQUIRED)
+find_package(Qt5 COMPONENTS Core Gui Network REQUIRED)
 set(CMAKE_AUTOMOC ON)
 
 include_directories(libqatemcontrol)
@@ -22,16 +22,14 @@ set(LIBQATEMCONTROL
     libqatemcontrol/qatemtypes.h
     libqatemcontrol/qupstreamkeysettings.h
 )
-set(SOURCES
-    src/main.cpp
-)
+set(SOURCES src/main.cpp)
 
 include(GNUInstallDirs)
 
 ########################
 # executable
 add_executable(${PROJECT_NAME} ${LIBQATEMCONTROL} ${SOURCES})
-target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Network)
+target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Gui Qt5::Network)
 
 install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR})
 
