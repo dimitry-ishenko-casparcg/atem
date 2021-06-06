@@ -18,7 +18,7 @@
 #include <stdexcept>
 #include <string>
 
-enum command { none, fade, cut, pvw, pgm };
+enum command { fade, cut, pvw, pgm };
 
 ////////////////////////////////////////////////////////////////////////////////
 void show_usage(const QString& name)
@@ -79,7 +79,7 @@ try
         throw_invalid("Missing ATEM command");
     }
 
-    command cmd = none;
+    command cmd;
     quint16 in_n;
 
     QString cmd_s{ argv[3] };
@@ -129,7 +129,6 @@ try
         case cut:  me->cut(); break;
         case pvw:  me->changePreviewInput(in_n); break;
         case pgm:  me->changeProgramInput(in_n); break;
-        default: break;
         }
 
         app.exit(0);
