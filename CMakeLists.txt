@@ -11,6 +11,17 @@ add_definitions(-DVERSION="${PROJECT_VERSION}")
 find_package(Qt5 COMPONENTS Core Network REQUIRED)
 set(CMAKE_AUTOMOC ON)
 
+include_directories(libqatemcontrol)
+
+set(LIBQATEMCONTROL
+    libqatemcontrol/libqatemcontrol_global.h
+    libqatemcontrol/qatemcameracontrol.cpp libqatemcontrol/qatemcameracontrol.h
+    libqatemcontrol/qatemconnection.cpp    libqatemcontrol/qatemconnection.h
+    libqatemcontrol/qatemdownstreamkey.cpp libqatemcontrol/qatemdownstreamkey.h
+    libqatemcontrol/qatemmixeffect.cpp     libqatemcontrol/qatemmixeffect.h
+    libqatemcontrol/qatemtypes.h
+    libqatemcontrol/qupstreamkeysettings.h
+)
 set(SOURCES
     src/main.cpp
 )
