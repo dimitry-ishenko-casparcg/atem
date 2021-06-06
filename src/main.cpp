@@ -23,7 +23,20 @@ enum command { none, fade, cut, pvw, pgm };
 ////////////////////////////////////////////////////////////////////////////////
 void show_usage(const QString& name)
 {
-    std::cout << "\nUsage: " << name.toStdString() << " <addr> <m/e> <cmd> [<args>...]\n" << std::endl;
+    std::cout << QString(R"(
+Usage: %1 <switcher> <m/e> <command> [<args>...]
+
+Where <switcher> is the IP address or hostname of the switcher, <m/e> is M/E
+number to control, and <command> is the name of the command to execute with
+optional <args> arguments.
+
+Command can be one of the following:
+
+    fade        Execute cross-fade transition.
+    cut         Execute cut transition.
+    pvw <in>    Switch preview to <in>.
+    pgm <in>    Switch program to <in>.
+)").arg(name).toStdString() << std::endl;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
