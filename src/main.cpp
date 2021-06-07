@@ -18,7 +18,7 @@
 #include <stdexcept>
 #include <string>
 
-enum command { fade, cut, pvw, pgm };
+enum command { tran, cut, pvw, pgm };
 
 ////////////////////////////////////////////////////////////////////////////////
 void show_usage(const QString& name)
@@ -32,7 +32,7 @@ optional <args> arguments.
 
 Command can be one of the following:
 
-    fade        Execute cross-fade transition.
+    tran        Execute auto transition.
     cut         Execute cut transition.
     pvw <in>    Switch preview to <in>.
     pgm <in>    Switch program to <in>.
@@ -83,7 +83,7 @@ try
     quint16 in_n;
 
     QString cmd_s{ argv[3] };
-         if(cmd_s == "fade") cmd = fade;
+         if(cmd_s == "tran") cmd = tran;
     else if(cmd_s == "cut" ) cmd = cut;
     else if(cmd_s == "pvw" )
     {
@@ -125,7 +125,7 @@ try
 
         switch(cmd)
         {
-        case fade: me->autoTransition(); break;
+        case tran: me->autoTransition(); break;
         case cut:  me->cut(); break;
         case pvw:  me->changePreviewInput(in_n); break;
         case pgm:  me->changeProgramInput(in_n); break;
